@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Catalog</title>
+</head>
+<body>
+    <h1>Book Catalog</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Price</th>
+                <th>Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.price }}</td>
+                    <td>{{ book.amount }}</td>
+                    <td>
+                        <form method="POST" action="{{ url_for('purchase', user_id=user_id, book_id=book.book_id) }}">
+                            <button type="submit">Buy</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
